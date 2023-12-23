@@ -1,5 +1,16 @@
 import { Inter } from 'next/font/google'
+import localFont from '@next/font/local'
 import './globals.css'
+
+const JosefinSans = localFont({
+  src: [
+    {
+      path: '../assets/fonts/JosefinSans-Regular.ttf',
+      weight: '400'
+    },
+  ],
+  variable: '--font-JosefinSans'
+})
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -10,7 +21,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${JosefinSans.variable} font-sans`}>
       <body className={inter.className}>{children}</body>
     </html>
   )

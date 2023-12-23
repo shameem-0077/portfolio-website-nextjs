@@ -1,3 +1,6 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,400;0,500;0,600;0,700;1,300&family=Orbitron:wght@400;500;600;700;900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -25,3 +28,75 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+
+
+@layer components {
+  /* This won't be included in your compiled CSS unless you actually use it */
+  .wrapper {
+    width: 70%;
+    margin: auto;
+  }
+
+  .no-wrapper {
+    width: 90%;
+  }
+
+  .contact-me-button {
+    padding: 10px;
+    border-radius: 20px;
+    background-color: #F4CE14;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 30px;
+  }
+
+  .what-i-do-card {
+    width: 30%;
+    padding: 30px;
+    border-radius: 10px;
+    margin: 20px;
+    box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px, rgb(91,66,255) -6px -2px 16px 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .get-in-touch {
+    padding: 10px;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+    border: none;
+    border-radius: 20px;
+    font-weight: bold;
+  }
+
+  .tag {
+    padding: 5px 10px;
+    border-radius: 20px;
+    background-color: black;
+    color: white;
+    margin-right: 10px;
+  }
+
+  .featured-project-card {
+    padding: 30px;
+    border-radius: 10px;
+    margin: 20px;
+    box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px, rgb(91,66,255) -6px -2px 16px 0px;
+  }
+
+  .no-featured-project-card {
+    padding: 10px;
+    border-radius: 10px;
+    margin: 5px;
+    box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px, rgb(91,66,255) -6px -2px 16px 0px;
+  }
+
+  .hr-line {
+    padding: 1px;
+    box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px, rgb(91,66,255) -6px -2px 16px 0px;
+    
+  }
+}
+
