@@ -82,7 +82,7 @@ body {
   .featured-project-card {
     padding: 30px;
     border-radius: 10px;
-    margin: 20px;
+    /* margin: 20px; */
     box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px, rgb(91,66,255) -6px -2px 16px 0px;
   }
 
@@ -97,6 +97,11 @@ body {
     padding: 1px;
     box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px, rgb(91,66,255) -6px -2px 16px 0px;
     
+  }
+
+  .svg-image {
+    box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px, rgb(91,66,255) -6px -2px 16px 0px;
+
   }
 }
 

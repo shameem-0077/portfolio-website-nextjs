@@ -4,10 +4,6 @@ import Image from "next/image";
 
 
 import SpotlightImage from "../assets/images/background-bg-photo.svg";
-import WhatiDoImageWebDevelopment from "../assets/icons/app-development.png";
-import WhatiDoImageCoaching from "../assets/icons/coaching.png";
-import WhatiDoImageMobile from "../assets/icons/mobile-app.png";
-import ProjectFeatureImageOne from "../assets/images/featured-image-1.jpeg";
 import AboutMeImage from "../assets/images/about-me.jpeg";
 
 import Box from '@mui/material/Box';
@@ -48,241 +44,218 @@ export default function Home() {
   return (
     <section
       id="main-container"
-      className="bg-[url('../assets/images/galaxy-night-view.jpg')] bg-repeat-y bg-contain font-sans text-white"
+      className="bg-[url('../assets/images/bg-2.jpg')] bg-cover font-sans text-white"
     >
-      <section id="header" className="max-sm:hidden">
-        <div className="wrapper py-5">
-          <header className="flex justify-between">
-            <div className="flex items-center">
-              <div className="logo-container">
-                <a href="/">shameem.zido-seed.tech</a>
+      <section className="h-screen overflow-y-scroll">
+        <section id="header" className="max-sm:hidden">
+          <div className="wrapper py-5">
+            <header className="flex justify-between">
+              <div className="flex items-center">
+                <div className="logo-container">
+                  <a href="/">shameem.zido-seed.tech</a>
+                </div>
               </div>
+              <div className="flex">
+                <ul className="flex items-center gap-3">
+                  <li>
+                    <a href="#about-me">About</a>
+                  </li>
+                  <li>
+                    <a href="#what-i-do">What I Do</a>
+                  </li>
+                  <li>
+                    <a href="#featured-projects">My Work</a>
+                  </li>
+                  <li>
+                    <a href="#">Resume</a>
+                  </li>
+                  <li>
+                    <Button
+                      size="large"
+                      className="bg-[#0a46d2] hover:bg-white hover:text-[#0a46d2] font-bold"
+                      variant="contained"
+                    >
+                      Contact me
+                    </Button>
+                  </li>
+                </ul>
+              </div>
+            </header>
+          </div>
+        </section>
+        <section id="spotlight" className="bg-[url('../assets/images/personal-bg.png')] bg-cover bg-center h-screen">
+          <div className="wrapper flex justify-between py-12 max-xl:flex-col-reverse max-lg:no-wrapper">
+            <div className="my-auto mx-0 max-xl:text-center">
+              <p className="text-[20px]">
+                Hello world, my name is Muhammed shameem
+              </p>
+              <h1 className="text-[80px] mb-2 max-2xl:text-[50px] font-bold max-xl:text-[60px]">Iam a Full-stack developer</h1>
+              <p className="m-[0 0 10px 0] w-[85%] text-[22px] max-xl:w-full">
+                I'm a skilled full-stack developer experienced in both front-end
+                and back-end technologies. I'm passionate about creating
+                efficient, user-friendly web applications that bridge design and
+                functionality.
+              </p>
+              <Button
+                size="large"
+                className="bg-[#0a46d2] hover:bg-white hover:text-[#0a46d2] font-bold mt-5"
+                variant="contained"
+              >
+                Contact me
+              </Button>
             </div>
-            <div className="flex">
-              <ul className="flex items-center gap-3">
-                <li>
-                  <a href="#">About</a>
-                </li>
-                <li>
-                  <a href="#">What I Do</a>
-                </li>
-                <li>
-                  <a href="#">My Work</a>
-                </li>
-                <li>
-                  <a href="#">Resume</a>
-                </li>
-                <li>
-                  <Button
-                    size="large"
-                    className="bg-[#0a46d2] hover:bg-white hover:text-[#0a46d2] font-bold"
-                    variant="contained"
-                  >
-                    Contact me
-                  </Button>
-                </li>
+          </div>
+        </section>
+        <section id="what-i-do" className="mt-[50px] max-xl:mt-[20px]">
+          <div className="wrapper max-lg:no-wrapper">
+            <div className="text-center mt-5 mb-12">
+              <h2 className="text-[40px]">What i do</h2>
+            </div>
+            <div className="what-i-do-bottom">
+              <ul className="flex justify-center flex-wrap">
+                {
+                whatIDo.length > 0 ? whatIDo.map((data) => (
+                      <li key={data._id} className="what-i-do-card min-w-80 max-md:w-full">
+                        <div className="top">
+                          <div className="w-[100px] mb-[20px]">
+                            <Image
+                              width={100}
+                              height={100}
+                              src={data.image}
+                              alt="what-i-do-image-web-development"
+                            />
+                          </div>
+                          <h3 className="text-[25px] mb-5">{data.title}</h3>
+                          <p className="leading-7 mt-5">{data.description}</p>
+                        </div>
+                        <div className="mt-[10px]">
+                        <Fab variant="extended" size="medium" className="hover:text-white hover:bg-black bg-white">
+                          Get in touch
+                        </Fab>
+                        </div>
+                      </li>
+                  )) :
+                  (
+                    Array.from(new Array(3)).map((item, index) => (
+                      <li key={index} className="what-i-do-card min-w-80 max-md:w-full">
+                        <Skeleton variant="rectangular" width={400} height={300} sx={{ marginRight: '10px' }} />
+                          <Typography>
+                            <Skeleton  animation="wave" width='100px' />
+                            <Skeleton  animation="wave" width="60% " />
+                          </Typography>
+                      </li>
+                    ))
+                  )
+                }
               </ul>
             </div>
-          </header>
-        </div>
-      </section>
-      <section id="spotlight">
-        <div className="wrapper flex justify-between py-12 max-xl:flex-col-reverse max-lg:no-wrapper">
-          <div className="my-auto mx-0 max-xl:text-center">
-            <p className="text-[20px]">
-              Hello world, my name is Muhammed shameem
-            </p>
-            <h1 className="text-[80px] mb-2 max-2xl:text-[50px] font-bold max-xl:text-[60px]">Iam a Full-stack developer</h1>
-            <p className="m-[0 0 10px 0] w-[85%] text-[22px] max-xl:w-full">
-              I'm a skilled full-stack developer experienced in both front-end
-              and back-end technologies. I'm passionate about creating
-              efficient, user-friendly web applications that bridge design and
-              functionality.
-            </p>
-            <Button
-              size="large"
-              className="bg-[#0a46d2] hover:bg-white hover:text-[#0a46d2] font-bold mt-5"
-              variant="contained"
-            >
-              Contact me
-            </Button>
           </div>
-          <div className="flex justify-center items-center">
-            <Image src={SpotlightImage} className='w-[1200px] max-xl:w-[500px] max-xl:mb-5' alt="spotlight-image" />
-          </div>
-        </div>
-      </section>
-      <section id="what-i-do" className="mt-[50px] max-xl:mt-[20px]">
-        <div className="wrapper max-lg:no-wrapper">
-          <div className="text-center mt-5 mb-12">
-            <h2 className="text-[40px]">What i do</h2>
-          </div>
-          <div className="what-i-do-bottom">
-            <ul className="flex justify-center flex-wrap">
-              {
-               whatIDo.length > 0 ? whatIDo.map((data) => (
-                    <li key={data._id} className="what-i-do-card min-w-80 max-md:w-full">
-                      <div className="top">
-                        <div className="w-[100px] mb-[20px]">
-                          <Image
-                            width={100}
-                            height={100}
-                            src={data.image}
-                            alt="what-i-do-image-web-development"
-                          />
-                        </div>
-                        <h3 className="text-[25px] mb-5">{data.title}</h3>
-                        <p className="leading-7 mt-5">{data.description}</p>
-                      </div>
-                      <div className="mt-[10px]">
-                      <Fab variant="extended" size="medium" className="hover:text-white hover:bg-black bg-white">
-                        Get in touch
-                      </Fab>
-                      </div>
-                    </li>
-                )) :
-                (
-                  Array.from(new Array(3)).map((item, index) => (
-                    <li key={index} className="what-i-do-card min-w-80 max-md:w-full">
-                      <Skeleton variant="rectangular" width={400} height={300} sx={{ marginRight: '10px' }} />
-                        <Typography>
-                          <Skeleton  animation="wave" width='100px' />
-                          <Skeleton  animation="wave" width="60% " />
-                        </Typography>
-                    </li>
-                  ))
-                )
-              }
-            </ul>
-          </div>
-        </div>
-      </section>
-      <section id="featured-projects" className="mt-[100px]">
-        <div className="wrapper max-sm:no-wrapper">
-          <div className="text-center">
-            <h3 className="text-[40px]">Featured projects</h3>
-          </div>
-          <div className="mt-[80px]">
-            <Stack spacing={10}>
-                {
-                    featuredProjects.length > 0 ? featuredProjects.map((project) => (
-                        <Box key={project._id} className="flex bg-transparent text-white text-left featured-project-card items-center font-sans max-md:flex-col">
-                            <div className="w-1/4 max-md:w-full h-full">
-                                <Image
-                                    width={800}
-                                    height={800}
-                                    className="rounded-md"
-                                    src={project.image}
-                                    alt="project-feature-image"
-                                />
+        </section>
+        <section id="featured-projects" className="mt-[100px]">
+          <div className="wrapper max-sm:no-wrapper">
+            <div className="text-center">
+              <h3 className="text-[40px]">Featured projects</h3>
+            </div>
+            <div className="mt-[80px]">
+              <Stack className="flex flex-row flex-wrap justify-evenly">
+                  {
+                      featuredProjects.length > 0 ? featuredProjects.map((project) => (
+                          <Box key={project._id} className="bg-transparent w-[600px] mb-[50px] text-white text-left featured-project-card items-center font-sans">
+                              <div className="aspect-video w-full bg-gray-100 relative rounded-md">
+                                  <Image
+                                      fill
+                                      className="rounded-md object-cover"
+                                      src={project.image}
+                                      alt="project-feature-image"
+                                  />
+                              </div>
+                              <div className="p-5 max-md:w-full max-md:text-center max-md:p-5">
+                                <div className="mb-[10px]">
+                                    <ul className="flex max-md:justify-center">
+                                        {
+                                            project.tags.map((tag, index) => (
+                                                <li key={index}>
+                                                    <div className="tag">
+                                                    <p>{tag}</p>
+                                                    </div>
+                                                </li>
+                                            ))
+                                        }
+                                    </ul>
+                                </div>
+                                <div className="mb-4">
+                                    <h4 className="text-[30px] font-bold mb-12 max-md:mb-1">{project.title}</h4>
+                                    <p>
+                                        {project.description}
+                                    </p>
+                                </div>
+                                <Button href={project.site_url} sx={{ color: 'white' }} variant="outlined" endIcon={<ArticleIcon />} >
+                                    See full case study
+                                </Button>
                             </div>
-                            <div className="p-12 w-[60%] max-md:w-full max-md:text-center max-md:p-5">
-                              <div className="mb-[20px]">
-                                  <ul className="flex max-md:justify-center">
-                                      {
-                                          project.tags.map((tag, index) => (
-                                              <li key={index}>
-                                                  <div className="tag">
-                                                  <p>{tag}</p>
-                                                  </div>
-                                              </li>
-                                          ))
-                                      }
-                                  </ul>
-                              </div>
-                              <div className="mb-4">
-                                  <h4 className="text-[30px] font-bold mb-12 max-md:mb-1">{project.title}</h4>
-                                  <p>
-                                      {project.description}
-                                  </p>
-                              </div>
-                              <Button sx={{ color: 'white' }} variant="outlined" endIcon={<ArticleIcon />} >
-                                  See full case study
-                              </Button>
-                          </div>
-                      </Box>
-                    )): (
-                      Array.from(new Array(3)).map((item, index) => (
-                        <Box key={index} className="flex bg-transparent text-white text-left featured-project-card items-center font-sans max-md:flex-col">
-                            <div className="w-1/4 max-md:w-full h-full">
-                                <Skeleton width='100%' height='300px' animation="wave" />
-                            </div>
-                            <div className="p-12 w-[60%] max-md:w-full max-md:text-center max-md:p-5">
-                              <div className="mb-[20px]">
-                                  <ul className="flex max-md:justify-center">
-                                      {
-                                          Array.from(new Array(3)).map((tag, index) => (
-                                            <Skeleton key={index} sx={{ borderRadius: '20px', marginRight: '10px' }} width={'100px'} height={'50px'} animation="wave" />
-                                          ))
-                                      }
-                                  </ul>
-                              </div>
-                              <div className="mb-4">
-                                  <h4 className="text-[30px] font-bold mb-12 max-md:mb-1">
-                                    <Skeleton animation="wave" />
-                                  </h4>
-                                  <p>
-                                    <Skeleton animation="wave" />
-                                    <Skeleton animation="wave" />
-                                    <Skeleton animation="wave" />
-
-                                  </p>
-                              </div>
-                              <Skeleton sx={{ borderRadius: '20px' }} width={'100px'} height={'50px'} animation="wave" />
-                          </div>
-                      </Box>
-                      ))
-                    )
-                }
-            </Stack>
-          </div>
-        </div>
-      </section>
-      <section id="about-me" className="mt-[100px] mb-[50px]">
-        <div className="wrapper max-md:no-wrapper">
-          <div className="text-center mb-5">
-            <h3 className="text-[40px]">About me</h3>
-          </div>
-          <Box sx={{ display: 'flex', justifyContent: 'center' }} className="featured-project-card max-sm:no-featured-project-card">
-            <Card sx={{ background: 'transparent', maxWidth: '32rem', color: 'white' }}  className='featured-project-card max-sm:no-featured-project-card'>
-              <CardActionArea>
-                <Image
-                  className="object-top object-cover h-96 rounded-md"
-                  src={AboutMeImage}
-                  alt="about-me-image"
-                />
-                
-                <CardContent>
-                  <Typography variant="body2" className="font-sans">
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Omnis a
-                  ea mollitia fugit doloribus blanditiis enim incidunt ut quos porro
-                  consequatur recusandae atque perferendis, sed nostrum culpa
-                  ratione perspiciatis. Beatae! Lorem ipsum, dolor sit amet
-                  consectetur adipisicing elit. Omnis a ea mollitia fugit doloribus
-                  blanditiis enim incidunt ut quos porro consequatur recusandae
-                  atque perferendis, sed nostrum culpa ratione perspiciatis. Beatae!
-                  </Typography>
-                </CardContent>
-              </CardActionArea>
-            </Card>
-          </Box>
-        </div>
-      </section>
-      <hr className="hr-line" />
-      <section id="footer" className="mt-[50px] pb-4">
-        <div className="wrapper flex justify-between items-center">
-          <div className="left">
-            <div className="personal-info">
-              <h1>Muhammed shameem abdulkareem</h1>
-              <p>Fullstack developer</p>
+                        </Box>
+                      )): (
+                        Array.from(new Array(3)).map((item, index) => (
+                          <li key={index} className="what-i-do-card min-w-80 max-md:w-full">
+                            <Skeleton variant="rectangular" width={400} height={300} sx={{ marginRight: '10px' }} />
+                              <Typography>
+                                <Skeleton  animation="wave" width='100px' />
+                                <Skeleton  animation="wave" width="60% " />
+                              </Typography>
+                          </li>
+                        ))
+                      )
+                  }
+              </Stack>
             </div>
           </div>
-          <div className="right">
-            <div className="top">
-              <p>2023-2024 shameeem.zido-seed.tech</p>
+        </section>
+        <section id="about-me" className="mt-[100px] mb-[50px]">
+          <div className="wrapper max-md:no-wrapper">
+            <div className="text-center mb-5">
+              <h3 className="text-[40px]">About me</h3>
+            </div>
+            <Box sx={{ display: 'flex', justifyContent: 'center' }} className="featured-project-card max-sm:no-featured-project-card">
+              <Card sx={{ background: 'transparent', maxWidth: '32rem', color: 'white' }}  className='featured-project-card max-sm:no-featured-project-card'>
+                <CardActionArea>
+                  <Image
+                    className="object-top object-cover h-96 rounded-md"
+                    src={AboutMeImage}
+                    alt="about-me-image"
+                  />
+                  
+                  <CardContent>
+                    <Typography variant="body2" className="font-sans">
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Omnis a
+                    ea mollitia fugit doloribus blanditiis enim incidunt ut quos porro
+                    consequatur recusandae atque perferendis, sed nostrum culpa
+                    ratione perspiciatis. Beatae! Lorem ipsum, dolor sit amet
+                    consectetur adipisicing elit. Omnis a ea mollitia fugit doloribus
+                    blanditiis enim incidunt ut quos porro consequatur recusandae
+                    atque perferendis, sed nostrum culpa ratione perspiciatis. Beatae!
+                    </Typography>
+                  </CardContent>
+                </CardActionArea>
+              </Card>
+            </Box>
+          </div>
+        </section>
+        <hr className="hr-line" />
+        <section id="footer" className="mt-[50px] pb-4">
+          <div className="wrapper flex justify-between items-center">
+            <div className="left">
+              <div className="personal-info">
+                <h1>Muhammed shameem abdulkareem</h1>
+                <p>Fullstack developer</p>
+              </div>
+            </div>
+            <div className="right">
+              <div className="top">
+                <p>2023-2024 shameeem.zido-seed.tech</p>
+              </div>
             </div>
           </div>
-        </div>
+        </section>
       </section>
     </section>
   );
