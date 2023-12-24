@@ -236,7 +236,7 @@ export default function Home() {
             <h3 className="text-[40px]">About me</h3>
           </div>
           <Box sx={{ display: 'flex', justifyContent: 'center' }} className="featured-project-card max-sm:no-featured-project-card">
-            <Card  className='max-w-lg featured-project-card bg-transparent text-white max-sm:no-featured-project-card'>
+            <Card sx={{ background: 'transparent' }}  className='max-w-lg featured-project-card text-white max-sm:no-featured-project-card'>
               <CardActionArea>
                 <Image
                   className="object-top object-cover h-96 rounded-md"
