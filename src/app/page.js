@@ -29,31 +29,6 @@ export default function Home() {
   const [whatIDo, setWhatIDo] = useState([])
   const [featuredProjects, setFeaturedProjects] = useState([])
 
-    const Item = styled(Paper)(({ theme }) => ({
-        backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-        ...theme.typography.body2,
-        padding: theme.spacing(1),
-        textAlign: 'center',
-        color: theme.palette.text.secondary,
-      }));
-
-      const FeaturedProjects = [
-        {
-            'id': 1,
-            'image': ProjectFeatureImageOne,
-            'tags': ['mobile', 'app', 'application'],
-            'title': 'My Mobile App',
-            'description': "In the world of web development, my passion comes to life. Crafting the digital landscapes we navigate daily, I am a web developer who revels in the art of building websites and web applications. From designing captivating user interfaces to ensuring seamless functionality in the background, I bring both creativity and precision to the virtual realm."
-        },
-        {
-            'id': 2,
-            'image': ProjectFeatureImageOne,
-            'tags': ['mobile', 'app'],
-            'title': 'My Mobile App',
-            'description': "In the world of web development, my passion comes to life. Crafting\ the digital landscapes we navigate daily, I am a web developer who revels in the art of building websites and web applications. From designing captivating user interfaces to ensuring seamless functionality in the background, I bring both creativity and precision to the virtual realm."
-        }
-      ]
-
       useEffect(() => {
         fetch('/api/what-i-do')
           .then((res) => res.json())
