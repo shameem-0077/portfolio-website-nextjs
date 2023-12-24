@@ -27,7 +27,7 @@ import { CardActionArea } from '@mui/material';
 export default function Home() {
 
     const Item = styled(Paper)(({ theme }) => ({
-        backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : 'white',
+        backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
         ...theme.typography.body2,
         padding: theme.spacing(1),
         textAlign: 'center',
@@ -191,7 +191,7 @@ export default function Home() {
             <Stack spacing={10}>
                 {
                     FeaturedProjects.map((project) => (
-                        <Item key={project.id} className="flex bg-transparent text-white text-left featured-project-card items-center font-sans max-md:flex-col">
+                        <Box key={project.id} className="flex bg-transparent text-white text-left featured-project-card items-center font-sans max-md:flex-col">
                             <div className="w-1/4 max-md:w-full">
                                 <Image
                                     className="rounded-md"
@@ -223,7 +223,7 @@ export default function Home() {
                                   See full case study
                               </Button>
                           </div>
-                      </Item>
+                      </Box>
                     ))
                 }
             </Stack>
