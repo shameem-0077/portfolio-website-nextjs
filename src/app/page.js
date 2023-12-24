@@ -16,6 +16,7 @@ import Paper from '@mui/material/Paper';
 import Stack from '@mui/material/Stack';
 import { styled } from '@mui/material/styles';
 
+import Skeleton from '@mui/material/Skeleton';
 import Fab from '@mui/material/Fab';
 import Button from "@mui/material/Button";
 import Card from '@mui/material/Card';
@@ -39,6 +40,7 @@ export default function Home() {
         fetch('/api/featured-projects')
           .then((res) => res.json())
           .then((data) => {
+            console.log(featuredProjects)
             setFeaturedProjects(data["data"])
         })
       }, [])
@@ -118,27 +120,38 @@ export default function Home() {
           <div className="what-i-do-bottom">
             <ul className="flex justify-center flex-wrap">
               {
-                whatIDo.map((data) => (
-                  <li key={data._id} className="what-i-do-card min-w-80 max-md:w-full">
-                    <div className="top">
-                      <div className="w-[100px] mb-[20px]">
-                        <Image
-                          width={100}
-                          height={100}
-                          src={data.image}
-                          alt="what-i-do-image-web-development"
-                        />
+               whatIDo.length > 0 ? whatIDo.map((data) => (
+                    <li key={data._id} className="what-i-do-card min-w-80 max-md:w-full">
+                      <div className="top">
+                        <div className="w-[100px] mb-[20px]">
+                          <Image
+                            width={100}
+                            height={100}
+                            src={data.image}
+                            alt="what-i-do-image-web-development"
+                          />
+                        </div>
+                        <h3 className="text-[25px] mb-5">{data.title}</h3>
+                        <p className="leading-7 mt-5">{data.description}</p>
                       </div>
-                      <h3 className="text-[25px] mb-5">{data.title}</h3>
-                      <p className="leading-7 mt-5">{data.description}</p>
-                    </div>
-                    <div className="mt-[10px]">
-                    <Fab variant="extended" size="medium" className="hover:text-white hover:bg-black bg-white">
-                      Get in touch
-                    </Fab>
-                    </div>
-                  </li>
-                ))
+                      <div className="mt-[10px]">
+                      <Fab variant="extended" size="medium" className="hover:text-white hover:bg-black bg-white">
+                        Get in touch
+                      </Fab>
+                      </div>
+                    </li>
+                )) :
+                (
+                  Array.from(new Array(3)).map((item) => (
+                    <Box >
+                      <Skeleton variant="rectangular" width={400} height={300} sx={{ marginRight: '10px' }} />
+                        <Typography>
+                          <Skeleton  animation="wave" width='100px' />
+                          <Skeleton  animation="wave" width="60% " />
+                        </Typography>
+                    </Box>
+                  ))
+                )
               }
             </ul>
           </div>
@@ -152,7 +165,7 @@ export default function Home() {
           <div className="mt-[80px]">
             <Stack spacing={10}>
                 {
-                    featuredProjects.map((project) => (
+                    featuredProjects.length > 0 ? featuredProjects.map((project) => (
                         <Box key={project._id} className="flex bg-transparent text-white text-left featured-project-card items-center font-sans max-md:flex-col">
                             <div className="w-1/4 max-md:w-full h-full">
                                 <Image
@@ -188,7 +201,38 @@ export default function Home() {
                               </Button>
                           </div>
                       </Box>
-                    ))
+                    )): (
+                      Array.from(new Array(3)).map((item) => (
+                        <Box  className="flex bg-transparent text-white text-left featured-project-card items-center font-sans max-md:flex-col">
+                            <div className="w-1/4 max-md:w-full h-full">
+                                <Skeleton width='100%' height='300px' animation="wave" />
+                            </div>
+                            <div className="p-12 w-[60%] max-md:w-full max-md:text-center max-md:p-5">
+                              <div className="mb-[20px]">
+                                  <ul className="flex max-md:justify-center">
+                                      {
+                                          Array.from(new Array(3)).map((tag, index) => (
+                                            <Skeleton sx={{ borderRadius: '20px', marginRight: '10px' }} width={'100px'} height={'50px'} animation="wave" />
+                                          ))
+                                      }
+                                  </ul>
+                              </div>
+                              <div className="mb-4">
+                                  <h4 className="text-[30px] font-bold mb-12 max-md:mb-1">
+                                    <Skeleton animation="wave" />
+                                  </h4>
+                                  <p>
+                                    <Skeleton animation="wave" />
+                                    <Skeleton animation="wave" />
+                                    <Skeleton animation="wave" />
+
+                                  </p>
+                              </div>
+                              <Skeleton sx={{ borderRadius: '20px' }} width={'100px'} height={'50px'} animation="wave" />
+                          </div>
+                      </Box>
+                      ))
+                    )
                 }
             </Stack>
           </div>
