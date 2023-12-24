@@ -83,26 +83,31 @@ export default function Home() {
             </header>
           </div>
         </section>
-        <section id="spotlight" className="bg-[url('../assets/images/personal-bg.png')] bg-cover bg-center h-screen">
-          <div className="wrapper flex justify-between py-12 max-xl:flex-col-reverse max-lg:no-wrapper">
-            <div className="my-auto mx-0 max-xl:text-center">
-              <p className="text-[20px]">
-                Hello world, my name is Muhammed shameem
-              </p>
-              <h1 className="text-[80px] mb-2 max-2xl:text-[50px] font-bold max-xl:text-[60px]">Iam a Full-stack developer</h1>
-              <p className="m-[0 0 10px 0] w-[85%] text-[22px] max-xl:w-full">
-                I'm a skilled full-stack developer experienced in both front-end
-                and back-end technologies. I'm passionate about creating
-                efficient, user-friendly web applications that bridge design and
-                functionality.
-              </p>
-              <Button
-                size="large"
-                className="bg-[#0a46d2] hover:bg-white hover:text-[#0a46d2] font-bold mt-5"
-                variant="contained"
-              >
-                Contact me
-              </Button>
+        <section id="spotlight" className="bg-[url('../assets/images/personal-bg.png')] bg-cover bg-center h-screen flex justify-end">
+          <div className="wrapper py-12 max-lg:no-wrapper h-full">
+            <div className="max-xl:text-center flex flex-col justify-between h-full">
+              <div>
+                <p className="text-[20px]">
+                  Hello world, my name is Muhammed shameem
+                </p>
+                <h1 className="text-[80px] mb-2 max-2xl:text-[50px] font-bold max-xl:text-[60px] max-sm:text-[35px]">Iam a Full-stack developer</h1>
+              </div>
+              <div>
+                <p className="m-[0 0 10px 0] w-[85%] text-[22px] max-xl:w-full max-sm:text-[16px]">
+                  I'm a skilled full-stack developer experienced in both front-end
+                  and back-end technologies. I'm passionate about creating
+                  efficient, user-friendly web applications that bridge design and
+                  functionality.
+                </p>
+                <Button
+                  size="large"
+                  className="bg-[#0a46d2] hover:bg-white hover:text-[#0a46d2] font-bold mt-5"
+                  variant="contained"
+                >
+                  Contact me
+                </Button>
+
+              </div>
             </div>
           </div>
         </section>
