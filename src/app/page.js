@@ -3,12 +3,12 @@
 import Image from "next/image";
 
 
-import SpotlightImage from "@/assets/images/background-bg-photo.svg";
-import WhatiDoImageWebDevelopment from "@/assets/icons/app-development.png";
-import WhatiDoImageCoaching from "@/assets/icons/coaching.png";
-import WhatiDoImageMobile from "@/assets/icons/mobile-app.png";
-import ProjectFeatureImageOne from "@/assets/images/featured-image-1.jpeg";
-import AboutMeImage from "@/assets/images/about-me.jpeg";
+import SpotlightImage from "../assets/images/background-bg-photo.svg";
+import WhatiDoImageWebDevelopment from "../assets/icons/app-development.png";
+import WhatiDoImageCoaching from "../assets/icons/coaching.png";
+import WhatiDoImageMobile from "../assets/icons/mobile-app.png";
+import ProjectFeatureImageOne from "../assets/images/featured-image-1.jpeg";
+import AboutMeImage from "../assets/images/about-me.jpeg";
 
 import Box from '@mui/material/Box';
 import ArticleIcon from '@mui/icons-material/Article';
@@ -23,8 +23,11 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
+import { useEffect, useState } from "react";
 
 export default function Home() {
+  const [whatIDo, setWhatIDo] = useState([])
+  const [featuredProjects, setFeaturedProjects] = useState([])
 
     const Item = styled(Paper)(({ theme }) => ({
         backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -51,35 +54,19 @@ export default function Home() {
         }
       ]
 
-      const WhatiDo = [
-        {
-          id: 1,
-          image: WhatiDoImageWebDevelopment,
-          title: "Web Development",
-          description: "In the world of web development, my passion comes to life. Crafting the digital landscapes we navigate daily, \
-                        I am a web developer who revels in the art of building websites and web applications. From designing captivating\
-                        ",
+      useEffect(() => {
+        fetch('/api/what-i-do')
+          .then((res) => res.json())
+          .then((data) => {
+            setWhatIDo(data["data"])
+        })
 
-        },
-        {
-          id: 2,
-          image: WhatiDoImageCoaching,
-          title: "1:1 Coaching",
-          description: "In the world of web development, my passion comes to life. Crafting the digital landscapes we navigate daily, \
-                        I am a web developer who revels in the art of building websites and web applications. From designing captivating\
-                        ",
-
-        },
-        {
-          id: 3,
-          image: WhatiDoImageMobile,
-          title: "Mobile App development",
-          description: "In the world of web development, my passion comes to life. Crafting the digital landscapes we navigate daily, \
-                        I am a web developer who revels in the art of building websites and web applications. From designing captivating\
-                        ",
-
-        }
-      ]
+        fetch('/api/featured-projects')
+          .then((res) => res.json())
+          .then((data) => {
+            setFeaturedProjects(data["data"])
+        })
+      }, [])
   
   return (
     <section
@@ -156,8 +143,8 @@ export default function Home() {
           <div className="what-i-do-bottom">
             <ul className="flex justify-center flex-wrap">
               {
-                WhatiDo.map((data) => (
-                  <li key={data.id} className="what-i-do-card min-w-80 max-md:w-full">
+                whatIDo.map((data) => (
+                  <li key={data._id} className="what-i-do-card min-w-80 max-md:w-full">
                     <div className="top">
                       <div className="w-[100px] mb-[20px]">
                         <Image
@@ -190,10 +177,12 @@ export default function Home() {
           <div className="mt-[80px]">
             <Stack spacing={10}>
                 {
-                    FeaturedProjects.map((project) => (
-                        <Box key={project.id} className="flex bg-transparent text-white text-left featured-project-card items-center font-sans max-md:flex-col">
-                            <div className="w-1/4 max-md:w-full">
+                    featuredProjects.map((project) => (
+                        <Box key={project._id} className="flex bg-transparent text-white text-left featured-project-card items-center font-sans max-md:flex-col">
+                            <div className="w-1/4 max-md:w-full h-full">
                                 <Image
+                                    width={800}
+                                    height={800}
                                     className="rounded-md"
                                     src={project.image}
                                     alt="project-feature-image"
