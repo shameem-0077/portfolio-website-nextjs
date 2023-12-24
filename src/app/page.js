@@ -142,14 +142,14 @@ export default function Home() {
                     </li>
                 )) :
                 (
-                  Array.from(new Array(3)).map((item) => (
-                    <Box >
+                  Array.from(new Array(3)).map((item, index) => (
+                    <li key={index} className="what-i-do-card min-w-80 max-md:w-full">
                       <Skeleton variant="rectangular" width={400} height={300} sx={{ marginRight: '10px' }} />
                         <Typography>
                           <Skeleton  animation="wave" width='100px' />
                           <Skeleton  animation="wave" width="60% " />
                         </Typography>
-                    </Box>
+                    </li>
                   ))
                 )
               }
@@ -202,8 +202,8 @@ export default function Home() {
                           </div>
                       </Box>
                     )): (
-                      Array.from(new Array(3)).map((item) => (
-                        <Box  className="flex bg-transparent text-white text-left featured-project-card items-center font-sans max-md:flex-col">
+                      Array.from(new Array(3)).map((item, index) => (
+                        <Box key={index} className="flex bg-transparent text-white text-left featured-project-card items-center font-sans max-md:flex-col">
                             <div className="w-1/4 max-md:w-full h-full">
                                 <Skeleton width='100%' height='300px' animation="wave" />
                             </div>
@@ -212,7 +212,7 @@ export default function Home() {
                                   <ul className="flex max-md:justify-center">
                                       {
                                           Array.from(new Array(3)).map((tag, index) => (
-                                            <Skeleton sx={{ borderRadius: '20px', marginRight: '10px' }} width={'100px'} height={'50px'} animation="wave" />
+                                            <Skeleton key={index} sx={{ borderRadius: '20px', marginRight: '10px' }} width={'100px'} height={'50px'} animation="wave" />
                                           ))
                                       }
                                   </ul>
