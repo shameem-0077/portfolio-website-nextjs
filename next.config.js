@@ -17,6 +17,12 @@ const nextConfig = {
             port: '',
             pathname: '/featured-projects/**',
           },
+          {
+            protocol: 'https',
+            hostname: 'shameembucket.s3.ap-south-1.amazonaws.com',
+            port: '',
+            pathname: '/profilepics/**',
+          },
         ],
       },
 }

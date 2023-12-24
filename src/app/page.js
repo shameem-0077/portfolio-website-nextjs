@@ -15,9 +15,7 @@ import { styled } from '@mui/material/styles';
 import Skeleton from '@mui/material/Skeleton';
 import Fab from '@mui/material/Fab';
 import Button from "@mui/material/Button";
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
+import DownloadIcon from '@mui/icons-material/Download';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
 import { useEffect, useState } from "react";
@@ -25,6 +23,8 @@ import { useEffect, useState } from "react";
 export default function Home() {
   const [whatIDo, setWhatIDo] = useState([])
   const [featuredProjects, setFeaturedProjects] = useState([])
+  const [aboutMe, setaboutMe] = useState({})
+
 
       useEffect(() => {
         fetch('/api/what-i-do')
@@ -36,8 +36,14 @@ export default function Home() {
         fetch('/api/featured-projects')
           .then((res) => res.json())
           .then((data) => {
-            console.log(featuredProjects)
             setFeaturedProjects(data["data"])
+        })
+
+        fetch('/api/about-me')
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data)
+            setaboutMe(data["data"][0])
         })
       }, [])
   
@@ -201,13 +207,15 @@ export default function Home() {
                         </Box>
                       )): (
                         Array.from(new Array(3)).map((item, index) => (
-                          <li key={index} className="what-i-do-card min-w-80 max-md:w-full">
-                            <Skeleton variant="rectangular" width={400} height={300} sx={{ marginRight: '10px' }} />
-                              <Typography>
-                                <Skeleton  animation="wave" width='100px' />
-                                <Skeleton  animation="wave" width="60% " />
-                              </Typography>
-                          </li>
+                          <ul className="flex justify-center flex-wrap">
+                            <li key={index} className="what-i-do-card min-w-80 max-md:w-full">
+                              <Skeleton variant="rectangular" width={400} height={300} sx={{ marginRight: '10px' }} />
+                                <Typography>
+                                  <Skeleton  animation="wave" width='100px' />
+                                  <Skeleton  animation="wave" width="60% " />
+                                </Typography>
+                            </li>
+                          </ul>
                         ))
                       )
                   }
@@ -220,28 +228,47 @@ export default function Home() {
             <div className="text-center mb-5">
               <h3 className="text-[40px]">About me</h3>
             </div>
-            <Box sx={{ display: 'flex', justifyContent: 'center' }} className="featured-project-card max-sm:no-featured-project-card">
-              <Card sx={{ background: 'transparent', maxWidth: '32rem', color: 'white' }}  className='featured-project-card max-sm:no-featured-project-card'>
-                <CardActionArea>
-                  <Image
-                    className="object-top object-cover h-96 rounded-md"
-                    src={AboutMeImage}
-                    alt="about-me-image"
-                  />
-                  
-                  <CardContent>
-                    <Typography variant="body2" className="font-sans">
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Omnis a
-                    ea mollitia fugit doloribus blanditiis enim incidunt ut quos porro
-                    consequatur recusandae atque perferendis, sed nostrum culpa
-                    ratione perspiciatis. Beatae! Lorem ipsum, dolor sit amet
-                    consectetur adipisicing elit. Omnis a ea mollitia fugit doloribus
-                    blanditiis enim incidunt ut quos porro consequatur recusandae
-                    atque perferendis, sed nostrum culpa ratione perspiciatis. Beatae!
-                    </Typography>
-                  </CardContent>
-                </CardActionArea>
-              </Card>
+            
+            <Box className="flex gap-40 featured-project-card max-sm:no-featured-project-card">
+              {
+                aboutMe ? (
+                  <>
+                  <Box width={400} className="relative">
+                      <Image
+                        fill
+                        className="object-top object-cover h-96 rounded-md"
+                        src={aboutMe.image}
+                        alt="about-me-image"
+                      />
+                  </Box>
+                  <Box width={600} className="p-5">
+                    <div>
+                      <p className='text-xl'>
+                        {aboutMe.description}
+                      </p>
+                    </div>
+                    <Stack justifyContent='center' direction="row" spacing={2} className='mt-8'>
+                      {
+                        aboutMe.completed?.map((item, index) => (
+                          <Box key={index} width={110} className="text-center">
+                            <h1 className='text-6xl'>{item.value}+</h1>
+                            <p>{ item.title }</p>
+                          </Box>
+
+                        ))
+                      }
+                    </Stack>
+                    <div className="flex justify-center mt-8">
+                      <Button href={aboutMe.resume_url} className="glow-shadow" variant="contained" endIcon={<DownloadIcon />}>
+                        Download CV
+                      </Button>
+                    </div>
+                  </Box>
+                  </>
+                ) : (
+                  <h1>no data</h1>
+                )
+              }
             </Box>
           </div>
         </section>
