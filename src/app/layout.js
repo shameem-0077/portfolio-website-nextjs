@@ -22,7 +22,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${JosefinSans.variable} font-sans`}>
-      <body className={inter.className}>{children}</body>
+      <body id='root' className={inter.className}>{children}</body>
     </html>
   )
 }
