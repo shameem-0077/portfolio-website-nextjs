@@ -1,7 +1,7 @@
 import { Inter } from 'next/font/google'
 import localFont from '@next/font/local'
 import './globals.css'
-
+import { StyledEngineProvider } from '@mui/material'
 const JosefinSans = localFont({
   src: [
     {
@@ -22,7 +22,11 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${JosefinSans.variable} font-sans`}>
-      <body id='root' className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <StyledEngineProvider injectFirst>
+          {children}
+        </StyledEngineProvider>
+      </body>
     </html>
   )
 }
