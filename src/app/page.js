@@ -84,7 +84,7 @@ export default function Home() {
   return (
     <section
       id="main-container"
-      className="bg-[url('../assets/images/galaxy-night-view.jpg')] bg-repeat-y bg-contain font-sans"
+      className="bg-[url('../assets/images/galaxy-night-view.jpg')] bg-repeat-y bg-contain font-sans text-white"
     >
       <section id="header" className="max-sm:hidden">
         <div className="wrapper py-5">
