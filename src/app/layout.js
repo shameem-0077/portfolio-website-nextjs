@@ -1,5 +1,6 @@
 import { Inter } from 'next/font/google'
 import localFont from '@next/font/local'
+import { Analytics } from '@vercel/analytics/react';
 import './globals.css'
 import { StyledEngineProvider } from '@mui/material'
 const JosefinSans = localFont({
@@ -25,6 +26,7 @@ export default function RootLayout({ children }) {
       <body className={inter.className}>
         <StyledEngineProvider injectFirst>
           {children}
+          <Analytics />
         </StyledEngineProvider>
       </body>
     </html>
