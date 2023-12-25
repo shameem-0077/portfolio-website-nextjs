@@ -29,6 +29,18 @@ body {
     rgb(var(--background-start-rgb));
 }
 
+@layer utilities {
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .no-scrollbar::-webkit-scrollbar {
+      display: none;
+  }
+ /* Hide scrollbar for IE, Edge and Firefox */
+  .no-scrollbar {
+      -ms-overflow-style: none;  /* IE and Edge */
+      scrollbar-width: none;  /* Firefox */
+  }
+}
+
 
 @layer components {
   /* This won't be included in your compiled CSS unless you actually use it */
@@ -103,6 +115,10 @@ body {
     /* box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px, rgb(91,66,255) -6px -2px 16px 0px; */
     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgb(91,66,255) 0px 1px 3px 1px;
 
+  }
+
+  .header-hover:hover {
+    text-decoration: underline;
   }
 }
 

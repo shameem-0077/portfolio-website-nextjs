@@ -7,7 +7,7 @@ export default async function handler(
 ) {
   let { db } = await connectToDatabase();
 
-  const data = await db.collection("about_me_collection").find().toArray();
+  const data = await db.collection("about_me_collection").find().limit(1).toArray();
 
   res.status(200).json({ data });
 }
