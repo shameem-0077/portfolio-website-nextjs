@@ -6,6 +6,7 @@ import Header from '../app/components/header'
 import Box from '@mui/material/Box';
 import ArticleIcon from '@mui/icons-material/Article';
 import Stack from '@mui/material/Stack';
+import Snackbar from '@mui/material/Snackbar';
 
 import Skeleton from '@mui/material/Skeleton';
 import Fab from '@mui/material/Fab';
@@ -13,12 +14,24 @@ import Button from "@mui/material/Button";
 import NavigationIcon from '@mui/icons-material/Navigation';
 import DownloadIcon from '@mui/icons-material/Download';
 import Typography from '@mui/material/Typography';
+import { useState } from "react";
 
 import {fetchWhatiDo, fetchFeaturedProjects, fetchaboutMe} from '../hooks/apiHooks'
 
 
 export default function Home() {
+  const [snuckBar, setSnuckBar] = useState({
+    open: true,
+    vertical: 'top',
+    horizontal: 'center',
+  });
 
+  const { vertical, horizontal, open } = snuckBar
+
+
+  const handleClose = () => {
+    setSnuckBar({ ...snuckBar, open: false });
+  };
 
   const whatIDO = fetchWhatiDo()
   const featuredProjects = fetchFeaturedProjects()
@@ -29,6 +42,13 @@ export default function Home() {
       id="main-container"
       className="bg-[url('../assets/images/bg-2.jpg')] bg-cover font-sans text-white"
     >
+      <Snackbar
+        anchorOrigin={{ vertical, horizontal }}
+        open={open}
+        onClose={handleClose}
+        message="This site is under work. "
+        key={vertical + horizontal}
+      />
       <section className="h-screen overflow-y-scroll no-scrollbar">
         <Header />
         <section id="spotlight" className="bg-[url('../assets/images/personal-bg.png')] bg-cover bg-center h-screen flex justify-end pt-24 max-md:pt-0">

@@ -11,8 +11,11 @@ import NavigationIcon from "@mui/icons-material/Navigation";
 import Button from "@mui/material/Button";
 import ArticleIcon from "@mui/icons-material/Article";
 import Pagination from "@mui/material/Pagination";
+import Backdrop from '@mui/material/Backdrop';
+import CircularProgress from '@mui/material/CircularProgress';
 
 export default function MyWork() {
+  const [open, setOpen] = useState(false);
   const [page, setPage] = useState(1);
   const [pageCount, setPageCount] = useState(0);
   const [featuredProjects, setFeaturedProjects] = useState([]);
@@ -24,12 +27,13 @@ export default function MyWork() {
         console.log(data);
         setFeaturedProjects(data["response_data"]["data"]);
         setPageCount(data["response_data"]["pagination"]["pageCount"]);
+        setOpen(false)
       });
   }, [page]);
 
   function handleChange(event, value) {
+    setOpen(true)
     setPage(value);
-    console.log(page);
   }
 
   return (
@@ -45,7 +49,19 @@ export default function MyWork() {
             </div>
             <div className="mt-[80px]">
               <Stack className="flex flex-row flex-wrap justify-evenly">
-                {featuredProjects.length > 0
+                {
+                  open ? (
+                    <div>
+                      <Backdrop
+                        sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+                        open={open}
+                        onClick={() => setOpen(false)}
+                      >
+                        <CircularProgress color="inherit" />
+                      </Backdrop>
+                    </div>
+                  ) : (
+                    featuredProjects.length > 0
                   ? featuredProjects.map((project) => (
                       <Box
                         key={project._id}
@@ -106,7 +122,9 @@ export default function MyWork() {
                           </Typography>
                         </li>
                       </ul>
-                    ))}
+                    ))
+                  )
+                }
               </Stack>
             </div>
           </div>
