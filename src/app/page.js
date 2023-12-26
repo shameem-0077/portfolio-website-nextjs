@@ -11,7 +11,7 @@ import Snackbar from '@mui/material/Snackbar';
 import Skeleton from '@mui/material/Skeleton';
 import Fab from '@mui/material/Fab';
 import Button from "@mui/material/Button";
-import NavigationIcon from '@mui/icons-material/Navigation';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import DownloadIcon from '@mui/icons-material/Download';
 import Typography from '@mui/material/Typography';
 import { useState } from "react";
@@ -40,8 +40,9 @@ export default function Home() {
   return (
     <section
       id="main-container"
-      className="bg-[url('../assets/images/bg-2.jpg')] bg-cover font-sans text-white"
+      className=" font-sans text-white"
     >
+      <video src={require('../assets/bg-videos/bg-video-2.mp4')} autoPlay muted loop className='absolute -z-10 w-full h-full object-cover' />
       <Snackbar
         anchorOrigin={{ vertical, horizontal }}
         open={open}
@@ -192,10 +193,10 @@ export default function Home() {
                     )
                   }
               </Stack>
-              <div className="flex justify-end">
+              <div className="flex justify-center">
                 <Fab href="/my-works" variant="extended" size="small" className="bg-white text-black hover:bg-black hover:text-white">
-                  <NavigationIcon sx={{ mr: 1 }} />
-                  Show more
+                  <ExpandMoreIcon sx={{ mr: 1 }} />
+                  Load more
                 </Fab>
               </div>
             </div>

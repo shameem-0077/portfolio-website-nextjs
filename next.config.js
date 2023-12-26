@@ -1,4 +1,7 @@
 /** @type {import('next').NextConfig} */
+
+const withVideos = require('next-videos');
+
 const nextConfig = {
     eslint: {
         ignoreDuringBuilds: true,
@@ -25,7 +28,6 @@ const nextConfig = {
           },
         ],
       },
-}
+};
 
-module.exports = nextConfig
-
+module.exports = withVideos(nextConfig);

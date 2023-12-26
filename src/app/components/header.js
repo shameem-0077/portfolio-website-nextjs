@@ -24,6 +24,9 @@ const Header = () => {
                   <a href="#featured-projects">My Work</a>
                 </li>
                 <li className='header-hover'>
+                  <a href="/products">My Products</a>
+                </li>
+                <li className='header-hover'>
                   <a href="/resume">Resume</a>
                 </li>
                 <li>
