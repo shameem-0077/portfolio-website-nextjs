@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "server": "node server"
   },
   "dependencies": {
     "@emotion/react": "^11.11.1",
@@ -16,13 +17,20 @@
     "@mui/material": "^5.15.1",
     "@next/font": "^14.0.4",
     "@vercel/analytics": "^1.1.1",
+    "jimp": "^0.3.5",
     "mongodb": "^6.3.0",
     "next": "14.0.4",
     "next-video": "^0.11.1",
     "next-videos": "^1.4.1",
+    "openai": "^4.24.1",
     "react": "^18",
     "react-dom": "^18",
-    "swr": "^2.2.4"
+    "react-drag-drop-files": "^2.3.10",
+    "react-scroll-parallax": "^3.4.5",
+    "socket.io": "^4.7.2",
+    "socket.io-client": "^4.7.2",
+    "swr": "^2.2.4",
+    "tesseract.js": "^5.0.4"
   },
   "devDependencies": {
     "@types/node": "20.10.5",

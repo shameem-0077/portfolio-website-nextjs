@@ -1,7 +1,6 @@
 'use client'
 
 import Image from "next/image";
-import useSWR from 'swr'
 import Header from '../app/components/header'
 import Box from '@mui/material/Box';
 import ArticleIcon from '@mui/icons-material/Article';
@@ -33,6 +32,7 @@ export default function Home() {
     setSnuckBar({ ...snuckBar, open: false });
   };
 
+
   const whatIDO = fetchWhatiDo()
   const featuredProjects = fetchFeaturedProjects()
   const aboutMe = fetchaboutMe()
@@ -41,7 +41,7 @@ export default function Home() {
     <section
       id="main-container"
       className=" font-sans text-white"
-    >
+      >
       <video src={require('../assets/bg-videos/bg-video-2.mp4')} autoPlay muted loop className='absolute -z-10 w-full h-full object-cover' />
       <Snackbar
         anchorOrigin={{ vertical, horizontal }}

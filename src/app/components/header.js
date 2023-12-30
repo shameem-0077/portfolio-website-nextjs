@@ -4,7 +4,7 @@ import Button from "@mui/material/Button";
 
 const Header = () => {
   return (
-    <section id="header" className="max-sm:hidden fixed w-full h-24 z-10">
+    <section id="header" className="max-sm:hidden">
         <div className="wrapper py-5">
           <header className="flex justify-between">
             <div className="flex items-center">
@@ -15,16 +15,19 @@ const Header = () => {
             <div className="flex">
               <ul className="flex items-center gap-3">
                 <li className='header-hover'>
-                  <a href="#about-me">About</a>
+                  <a href="/#about-me">About</a>
                 </li>
                 <li className='header-hover'>
-                  <a href="#what-i-do">What I Do</a>
+                  <a href="/#what-i-do">What I Do</a>
                 </li>
                 <li className='header-hover'>
                   <a href="#featured-projects">My Work</a>
                 </li>
                 <li className='header-hover'>
                   <a href="/products">My Products</a>
+                </li>
+                <li className='header-hover'>
+                  <a href="/blog">Blog</a>
                 </li>
                 <li className='header-hover'>
                   <a href="/resume">Resume</a>
