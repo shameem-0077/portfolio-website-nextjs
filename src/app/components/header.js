@@ -1,4 +1,6 @@
-import React from 'react'
+"use client"
+
+import React, {useState} from 'react'
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import Button from '@mui/material/Button';
@@ -15,7 +17,7 @@ import IconButton from '@mui/material/IconButton';
 
 const Header = () => {
 
-  const [state, setState] = React.useState({
+  const [state, setState] = useState({
     right: false,
   });
 
