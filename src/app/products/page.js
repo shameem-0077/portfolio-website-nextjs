@@ -6,6 +6,7 @@ import Box from '@mui/material/Box';
 import ProductDemo from '../../assets/icons/mobile-app.png'
 import Button from "@mui/material/Button";
 import Header from '../components/header';
+import React from 'react';
 
 
 const page = () => {
