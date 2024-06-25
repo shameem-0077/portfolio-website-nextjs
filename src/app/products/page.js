@@ -42,6 +42,14 @@ const page = () => {
       product_url: '/products/chat-room',
       button_disabled: true
     },
+    {
+      id: 5,
+      title: 'Posts',
+      image: ProductDemo,
+      description: "Product description demo",
+      product_url: '/products/posts',
+      button_disabled: false
+    },
     
   ]
   return (
