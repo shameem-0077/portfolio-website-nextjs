@@ -1,28 +1,28 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [
-    './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
-  ],
+  content: ["./src/**/*.{js,jsx}"],
+  mode: "jit",
   theme: {
     extend: {
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+      colors: {
+        bgprimary: "#DC5F00",
+        primary: "#000000",
+        secondary: "#686D76",
+        tertiary: "#352F44",
+        "black-100": "#5C5470",
+        "black-200": "#B9B4C7",
+        "white-100": "#f3f3f3",
       },
-      fontFamily: {
-        sans: ['var(--font-JosefinSans)']
+      boxShadow: {
+        card: "0px 35px 120px -15px #211e35",
       },
       screens: {
-        'sm': '640px',
-        'md': '768px',
-        'lg': '1024px',
-        'xl': '1280px',
-        '2xl': '1536px',
-      }
-    }
+        xs: "450px",
+      },
+      backgroundImage: {
+        "hero-pattern": "url('/bg-hero-2.jpg')",
+      },
+    },
   },
   plugins: [],
-}
+};
