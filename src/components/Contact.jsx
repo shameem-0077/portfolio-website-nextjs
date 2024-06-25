@@ -1,7 +1,7 @@
 "use client"
 import React, {useState, useRef} from 'react';
 import { motion } from 'framer-motion';
-// import emailjs from "@emailjs/browser";
+import emailjs from '@emailjs/browser';
 
 import { styles } from '../styles';
 import { EarthCanvas } from './canvas';
@@ -30,33 +30,33 @@ const Contact = () => {
   const handlesubmit = (e) => {
     e.preventDefault()
     setLoading(true);
-    // VVvIdxIE7oAXLUpso
-    // template_yp3ifqi
-    // service_298cvdf
-    // emailjs.send(
-    //   'service_298cvdf',
-    //   'template_yp3ifqi',
-    //   {
-    //     from_name: form.name,
-    //     to_name: 'Shameem',
-    //     from_email: form.email,
-    //     to_email: 'shameemoff52@gmail.com',
-    //     message: form.message
-    //   },
-    //   'VVvIdxIE7oAXLUpso'
-    // ).then(() => {
-    //   setLoading(false);
-    //   alert('Thank You. I will get back to you as soon as possible ');
-    //   setForm({
-    //     name: '',
-    //     email: '',
-    //     message: ''
-    //   })
-    // }).catch((error) => {
-    //   setLoading(false)
-    //   console.log(error)
-    //   alert('Something went wrong')
-    // })
+    const apiKey = process.env.EMAILJS_APIKEY
+    const emailjsServiceID = process.env.EMAILJS_SERVICEID
+    const emailjsTemplateID = process.env.EMAILJS_TEMPLATEID
+    emailjs.send(
+      emailjsServiceID,
+      emailjsTemplateID,
+      {
+        from_name: form.name,
+        to_name: 'Shameem',
+        from_email: form.email,
+        to_email: 'shameemoff52@gmail.com',
+        message: form.message
+      },
+      apiKey,
+    ).then(() => {
+      setLoading(false);
+      alert('Thank You. I will get back to you as soon as possible ');
+      setForm({
+        name: '',
+        email: '',
+        message: ''
+      })
+    }).catch((error) => {
+      setLoading(false)
+      console.log(error)
+      alert('Something went wrong')
+    })
   };
 
   return (
