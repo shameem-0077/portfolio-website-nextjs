@@ -23,7 +23,7 @@ import threejs from "./tech/threejs.svg";
 
 import meta from "./company/meta.png";
 import shopify from "./company/shopify.png";
-import talrop from "./company/talrop_logo.svg";
+import talrop from "./company/Talrop_logo.svg";
 import tesla from "./company/tesla.png";
 import steyp from "./company/steyp-logo.svg";
 
